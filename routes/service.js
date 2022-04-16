@@ -5,7 +5,7 @@ const User = require('../models/User');
 const Service = require('../models/Service');
 const fetchuser = require('../middleware/fetchuser');
 
-// ROUTE 1: Get loggedin User Cart details using: GET "/api/auth/getorders". login required
+// ROUTE 1: Get items which are at service centre details using: GET "/api/auth/getservicable". login required
 router.get('/getservicable', fetchuser, async (req, res) => {
     try {
         // const user = await User.findById(req.user.id);
@@ -17,13 +17,13 @@ router.get('/getservicable', fetchuser, async (req, res) => {
     }
 });
 
-
+// ROUTE 2: Get all items which are at service centre details using: GET "/api/auth/getallitems". (Only for admin)
 router.get('/getallitems', fetchuser, async (req, res) => {
     try {
         const user = await User.findById(req.user.id);
         // console.log(user);
         let orders = [];
-        if (user.email==="prashant5aug@gmail.com"){
+        if (user.email==="admin123@gmail.com"){
             orders = await Service.find();
         }
         let success = true;
@@ -38,7 +38,7 @@ router.get('/getallitems', fetchuser, async (req, res) => {
 });
 
 
-// ROUTE 2: Add new Item using : POST "api/auth/order". Login required
+// ROUTE 3: Sent any item to service center POST "api/auth/service". Login required
 router.post('/service', fetchuser, async (req, res) => {
     try {
         const { itemCode, title, imgLink, owner,used, price, delivered } = req.body;

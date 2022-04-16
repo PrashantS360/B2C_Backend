@@ -5,7 +5,7 @@ const User = require('../models/User');
 const Item = require('../models/Item');
 const fetchuser = require('../middleware/fetchuser');
 
-
+// ROUTE 1 : Add item to BKB using POST : "/api/auth/getproducts". login required
 router.post('/additem', fetchuser, async (req, res) => {
     try {
         const { itemCode, title, imgLink,category, owner, used, price, location, description } = req.body;
@@ -36,7 +36,7 @@ router.post('/additem', fetchuser, async (req, res) => {
     }
 });
 
-// ROUTE 1: Get items of some category: POST "/api/auth/getproducts". login required
+// ROUTE 2: Get items of some category: POST "/api/auth/getproducts". login required
 router.post('/getproducts/:category', async (req, res) => {
     try {
         // const user = await User.findById(req.user.id);
@@ -48,6 +48,8 @@ router.post('/getproducts/:category', async (req, res) => {
     }
 });
 
+
+// ROUTE 3: Get any specific products : POST "/api/auth/getproducts". login required
 router.get('/getitem/:itemcode', async (req, res) => {
     try {
         // const user = await User.findById(req.user.id);

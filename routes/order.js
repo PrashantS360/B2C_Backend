@@ -5,7 +5,7 @@ const { validationResult } = require('express-validator');
 const Order = require('../models/Order');
 const fetchuser = require('../middleware/fetchuser');
 
-// ROUTE 1: Get loggedin User Cart details using: GET "/api/auth/getorders". login required
+// ROUTE 1: Get all order of logged user using: GET "/api/auth/getorders". login required
 router.get('/getorders', fetchuser, async (req, res) => {
     try {
         // const user = await User.findById(req.user.id);
@@ -18,7 +18,7 @@ router.get('/getorders', fetchuser, async (req, res) => {
 });
 
 
-// ROUTE 2: Add new Item using : POST "api/auth/order". Login required
+// ROUTE 2: Order an item using POST "api/auth/order". Login required
 router.post('/order', fetchuser, async (req, res) => {
     try {
         const { itemCode, title, imgLink, owner,used, price, delivered } = req.body;
