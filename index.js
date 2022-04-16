@@ -13,6 +13,7 @@ app.use(express.json())
 app.use('/api/auth', require('./routes/auth'))
 app.use('/api/auth', require('./routes/item'))
 app.use('/api/auth', require('./routes/order'))
+app.use('/api/auth', require('./routes/service'))
 
 app.listen(port, () => {
   console.log(`B2C running at http://localhost:${port}`)
