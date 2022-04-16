@@ -21,7 +21,7 @@ router.get('/getservicable', fetchuser, async (req, res) => {
 router.get('/getallitems', fetchuser, async (req, res) => {
     try {
         const user = await User.findById(req.user.id);
-        console.log(user);
+        // console.log(user);
         let orders = [];
         if (user.email==="prashant5aug@gmail.com"){
             orders = await Service.find();
